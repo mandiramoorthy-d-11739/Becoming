@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* The theme is driven by a `.dark` class toggled on <html> by ThemeController. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Maps the HSL design tokens below onto Tailwind's color utilities so classes
+   like `bg-background`, `border-border` and `text-muted-foreground` resolve. */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+@layer base {
+  :root {
+    --background: 45 20% 97%;
+    --foreground: 240 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 8%;
+    --primary: 258 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 15% 93%;
+    --secondary-foreground: 240 10% 25%;
+    --muted: 45 10% 92%;
+    --muted-foreground: 240 5% 48%;
+    --accent: 258 60% 95%;
+    --accent-foreground: 258 70% 35%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 45 10% 88%;
+    --input: 45 10% 88%;
+    --ring: 258 70% 55%;
+    --radius: 1rem;
+
+    /* Identity accent colors */
+    --calm: 258 70% 55%;
+    --health: 152 60% 40%;
+    --focus: 217 91% 55%;
+    --social: 340 75% 55%;
+    --learning: 38 92% 50%;
+    --creative: 280 70% 55%;
+    --sleep: 200 80% 50%;
+    --discipline: 220 60% 50%;
+  }
+
+  .dark {
+    --background: 240 8% 9%;
+    --foreground: 45 15% 93%;
+    --card: 240 8% 12%;
+    --card-foreground: 45 15% 93%;
+    --popover: 240 8% 12%;
+    --popover-foreground: 45 15% 93%;
+    --primary: 258 70% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 45 10% 75%;
+    --muted: 240 8% 15%;
+    --muted-foreground: 240 5% 55%;
+    --accent: 258 40% 20%;
+    --accent-foreground: 258 70% 75%;
+    --destructive: 0 65% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 258 70% 65%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .surface {
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) * 1.5);
+  }
+  .surface-raised {
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) * 1.5);
+    box-shadow: 0 2px 8px -2px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gradient-calm {
+    background: linear-gradient(135deg, hsl(258 70% 55% / 0.15), hsl(217 91% 55% / 0.1));
+  }
+  .gradient-health {
+    background: linear-gradient(135deg, hsl(152 60% 40% / 0.15), hsl(152 80% 55% / 0.08));
+  }
+  .gradient-focus {
+    background: linear-gradient(135deg, hsl(217 91% 55% / 0.15), hsl(217 70% 65% / 0.08));
+  }
+  .gradient-social {
+    background: linear-gradient(135deg, hsl(340 75% 55% / 0.15), hsl(340 60% 65% / 0.08));
+  }
+}
